@@ -35,8 +35,8 @@ namespace Boostlingo.PeopleSoft.Tests
             // Arrange
             _context.Persons.AddRange(new List<Person>
             {
-                new Person { Id = "1", FirstName = "John", LastName = "Doe", Bio = "John's background.", Version = 1, Language = "en" },
-                new Person { Id = "2", FirstName = "Jane", LastName = "Doe", Bio = "Jane's past.", Version = 2, Language = "fr" }
+                new Person { Id = "V59OF92YF627HFY0", FirstName = "Adeel", LastName = "Solangi", Language = "Sindhi", Bio = "Donec lobortis eleifend condimentum. Cras dictum dolor lacinia lectus vehicula rutrum. Maecenas quis nisi nunc. Nam tristique feugiat est vitae mollis. Maecenas quis nisi nunc.", Version =  6.1 },
+                new Person { Id = "ENTOCR13RSCLZ6KU", FirstName = "Afzal", LastName = "Ghaffar", Language = "Sindhi", Bio = "Aliquam sollicitudin ante ligula, eget malesuada nibh efficitur et. Pellentesque massa sem, scelerisque sit amet odio id, cursus tempor urna. Etiam congue dignissim volutpat. Vestibulum pharetra libero et velit gravida euismod.", Version =  1.88 },
             });
             await _context.SaveChangesAsync();
 
@@ -45,15 +45,15 @@ namespace Boostlingo.PeopleSoft.Tests
 
             // Assert
             Assert.That(result.Count, Is.EqualTo(2));
-            Assert.That(result[0].FirstName, Is.EqualTo("John"));
-            Assert.That(result[1].FirstName, Is.EqualTo("Jane"));
+            Assert.That(result[0].FirstName, Is.EqualTo("Adeel"));
+            Assert.That(result[1].FirstName, Is.EqualTo("Afzal"));
         }
 
         [Test]
         public async Task LoadPersonsAsync_AddsSinglePerson()
         {
             // Arrange
-            var person = new Person { Id = "1", FirstName = "John", LastName = "Doe", Bio = "Bio", Version = 1, Language = "en" };
+            var person = new Person { Id = "V59OF92YF627HFY0", FirstName = "Adeel", LastName = "Solangi", Language = "Sindhi", Bio = "Donec lobortis eleifend condimentum. Cras dictum dolor lacinia lectus vehicula rutrum. Maecenas quis nisi nunc. Nam tristique feugiat est vitae mollis. Maecenas quis nisi nunc.", Version =  6.1 };
 
             // Act
             await _dataService.LoadPersonsAsync(new List<Person> { person }, 1);
@@ -61,7 +61,7 @@ namespace Boostlingo.PeopleSoft.Tests
             // Assert
             var personsInDb = await _context.Persons.ToListAsync();
             Assert.That(personsInDb.Count, Is.EqualTo(1));
-            Assert.That(personsInDb[0].FirstName, Is.EqualTo("John"));
+            Assert.That(personsInDb[0].FirstName, Is.EqualTo("Adeel"));
         }
         
         [Test]
