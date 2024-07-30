@@ -6,7 +6,7 @@ namespace Boostlingo.PeopleSoft.Data.Contexts;
 
 public class ApplicationDbContext : DbContext
 {
-    public virtual DbSet<Person> Persons { get; set; }
+    public DbSet<Person> Persons { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
           : base(options)
