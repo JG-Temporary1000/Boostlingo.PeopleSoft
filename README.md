@@ -12,7 +12,7 @@
 <h2>🛠️ Installation Instructions</h2>
 <ol>
 <li>Clone this repository.</li>
-<li>Navigate to the cloned repository project path.</li>
+<li>Navigate to the project path of the cloned repository.</li>
 <li>Run <code>dotnet restore</code> to install all dependencies.</li>
 <li>Navigate to <i>Boostlingo.PeopleSoft/BoostLingo.PeopleSoft/</i> and edit the <b>appsettings.json</b> file.</li>
 <li>Set the <code>DBConnection</code> value <code>data source=XXXXXXXXXXXXX;initial catalog=XXXXXXXXXXXXX;persist security info=True;user id=XXXXXXXXXXXXX;password=XXXXXXXXXXXXX;MultipleActiveResultSets=True;Encrypt=False;</code> to match your MS SQL server database. Make sure an empty database is available based on the connection string provided.
@@ -21,7 +21,7 @@
   <br /><b>id</b> = db user
   <br /><b>password</b> = db password
 </li>
-<li>You may also modify the <code>Serilog > WriteTo > Path</code> value <code>C:\\Temp\\Log.txt</code> to customize the logging output directory.</li>
+<li>You may also modify the <code>Serilog > WriteTo > Path</code> value <code>C:\\Temp\\Log.txt</code> to change the logging output directory.</li>
 <li>When you run the application for the first time, the neccessary database tables will be created.</li>
 <li>Navigate to <i>Boostlingo.PeopleSoft/BoostLingo.PeopleSoft/</i> and run <code>dotnet run</code> to start the application.</li>
 </ol>
