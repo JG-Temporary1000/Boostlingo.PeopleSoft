@@ -15,7 +15,7 @@
 <li>Navigate to the project path of the cloned repository.</li>
 <li>Run <code>dotnet restore</code> to install all dependencies.</li>
 <li>Navigate to <i>Boostlingo.PeopleSoft/BoostLingo.PeopleSoft/</i> and edit the <b>appsettings.json</b> file.</li>
-<li>Set the <code>DBConnection</code> value <code>data source=XXXXXXXXXXXXX;initial catalog=XXXXXXXXXXXXX;persist security info=True;user id=XXXXXXXXXXXXX;password=XXXXXXXXXXXXX;MultipleActiveResultSets=True;Encrypt=False;</code> to match your MS SQL server database. Make sure an empty database is available based on the connection string provided.
+<li>Set the <code>DBConnection</code> value <code>data source=XXXXXXXXXXXXX;initial catalog=XXXXXXXXXXXXX;persist security info=True;user id=XXXXXXXXXXXXX;password=XXXXXXXXXXXXX;MultipleActiveResultSets=True;Encrypt=False;</code> to match your MS SQL server database. You can either start with an empty database or a database will be automatically created for you.
   <br /><b>data source</b> = IP address or DNS of your MS SQL server
   <br /><b>initial catalog</b> = name of your database
   <br /><b>id</b> = db user
