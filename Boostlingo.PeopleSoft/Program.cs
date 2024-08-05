@@ -48,7 +48,10 @@ public class Program
                 services.AddHttpClient<IApiService, ApiService>(client =>
                 {
                     client.Timeout = TimeSpan.FromSeconds(10);
-                }).AddPolicyHandler(HttpClientRetryPolicy.GetRetryPolicy());
+                })
+                .AddPolicyHandler(HttpClientRetryPolicy.GetRetryPolicy()) // Retry endpoints with element of randomness
+                .AddPolicyHandler(HttpCircuitBreakerPolicy.GetCircuitBreakerPolicy()); // Eventually stop trying if fault not transient
+
                 services.AddScoped<IConsoleService, ConsoleService>();
                 services.AddScoped<ICultureService, CultureService>();
                 services.AddScoped<IExceptionService, ExceptionService>();

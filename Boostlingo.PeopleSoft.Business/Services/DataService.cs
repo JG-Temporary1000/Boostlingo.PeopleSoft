@@ -46,7 +46,7 @@ public class DataService : IDataService
         {
             // Detach any existing tracked instance with the same ID
             // This addressed an issue when deleting persons outside of the application
-            // I preferred this approach to _context.ChangeTracker.Clear(), which seemed a bit code stanky
+            // I preferred this approach to _context.ChangeTracker.Clear(), which seemed to be a code smell
             var trackedPerson = _context.Persons.Local.FirstOrDefault(p => p.Id == person.Id);
             if (trackedPerson != null) _context.Entry(trackedPerson).State = EntityState.Detached;
 
