@@ -35,7 +35,7 @@ public class DataService : IDataService
     {
         // Get all existing persons in a single query
         var personIds = persons.Select(p => p.Id).ToList();
-        var existingPersons = await _context.Persons.Where(p => personIds.Contains(p.Id)).ToListAsync();
+        var existingPersons = await _context.Persons.AsNoTracking().Where(p => personIds.Contains(p.Id)).ToListAsync();
 
         // Create dictionaries to track updates and inserts used later in batching
         var personsExisting = existingPersons.ToDictionary(p => p.Id);
@@ -44,6 +44,12 @@ public class DataService : IDataService
 
         foreach (var person in persons)
         {
+            // Detach any existing tracked instance with the same ID
+            // This addressed an issue when deleting persons outside of the application
+            // I preferred this approach to _context.ChangeTracker.Clear(), which seemed a bit code stanky
+            var trackedPerson = _context.Persons.Local.FirstOrDefault(p => p.Id == person.Id);
+            if (trackedPerson != null) _context.Entry(trackedPerson).State = EntityState.Detached;
+
             if (personsExisting.TryGetValue(person.Id, out var existingPerson))
             {
                 // Update existing person
