@@ -1,4 +1,5 @@
 ﻿using Boostlingo.PeopleSoft;
+using Boostlingo.PeopleSoft.Business.Helpers;
 using Boostlingo.PeopleSoft.Business.Models;
 using Boostlingo.PeopleSoft.Business.Services;
 using Boostlingo.PeopleSoft.Data.Contexts;
@@ -44,7 +45,10 @@ public class Program
 
                 // Register services
                 services.AddScoped<IDataService, DataService>();
-                services.AddHttpClient<IApiService, ApiService>();
+                services.AddHttpClient<IApiService, ApiService>(client =>
+                {
+                    client.Timeout = TimeSpan.FromSeconds(10);
+                }).AddPolicyHandler(HttpClientRetryPolicy.GetRetryPolicy());
                 services.AddScoped<IConsoleService, ConsoleService>();
                 services.AddScoped<ICultureService, CultureService>();
                 services.AddScoped<IExceptionService, ExceptionService>();
